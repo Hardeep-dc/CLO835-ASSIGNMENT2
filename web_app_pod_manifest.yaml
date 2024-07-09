@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-app
+  namespace: web-namespace
+  labels:
+    app: web
+spec:
+  containers:
+  - name: web-app
+    image: 104387388648.dkr.ecr.us-east-1.amazonaws.com/assignment2-repo:web-app-image
+    ports:
+    - containerPort: 8080
+    env:
+    - name: DBPORT
+      value: "3306"
+    - name: DBHOST
+      value: "mysql"
+    - name: DBUSER
+      value: "root"
+    - name: DBPASSWORD
+      value: "rootpassword"
+  restartPolicy: Always
